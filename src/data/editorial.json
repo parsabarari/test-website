@@ -1,0 +1,282 @@
+{
+  "fa": {
+    "photoAlt": "چیدمان نمایشی کاسه زعفران روی سطح روشن",
+    "imageNote": "تصویر فضاساز نمونه؛ نمایندهٔ محصول قابل عرضه نیست",
+    "storyLabel": "از رشته تا انتخاب",
+    "storyTitle": "جزئیات کوچک، شروع یک انتخاب آگاهانه",
+    "storyBody": "در نگاه اول، همهٔ رشته‌ها قرمز به نظر می‌رسند؛ اما طول، نحوهٔ برش و حضور بخش روشن رشته، زبان متفاوت هر نمونه را می‌سازند. معرفی چهار نوع در این صفحه، نقطهٔ شروعی برای گفت‌وگوی دقیق‌تر دربارهٔ نیاز شماست.",
+    "storySecond": "این نسخه، ساختار پیشنهادی معرفی کسب‌وکار را نشان می‌دهد. داستان برند، محل فعالیت و اطلاعات عرضه پس از تأیید صاحب کسب‌وکار جایگزین متن‌های نمونه خواهد شد.",
+    "stepsLabel": "راهنمای شروع همکاری",
+    "stepsTitle": "یک درخواست روشن، در سه قدم",
+    "steps": [
+      {
+        "title": "نوع موردنظر",
+        "body": "نام برش موردنظر یا کاربردی را که برای زعفران در نظر دارید بنویسید. اگر هنوز انتخاب نکرده‌اید، نمونه‌هایی را که می‌خواهید مقایسه کنید مشخص کنید."
+      },
+      {
+        "title": "مقدار و بسته‌بندی",
+        "body": "مقدار تقریبی موردنیاز و ترجیح بسته‌بندی خود را توضیح دهید؛ جزئیات قابل عرضه باید در گفت‌وگو با فروش تأیید شوند."
+      },
+      {
+        "title": "مقصد و زمان‌بندی",
+        "body": "کشور مقصد و بازهٔ زمانی مدنظرتان را بنویسید تا اطلاعات لازم برای بررسی درخواست در یک پیام جمع باشد."
+      }
+    ],
+    "noteLabel": "فراتر از نام یک برش",
+    "noteTitle": "انتخاب را از نیاز کسب‌وکارتان شروع کنید",
+    "noteBody": "ظاهر رشته تنها یکی از موضوعات خرید است. پیش از تصمیم نهایی، دربارهٔ مشخصات محموله، بسته‌بندی و مدارک موجود سؤال کنید. نام تجاری یک برش به‌تنهایی گواهی کیفیت نیست.",
+    "faqLabel": "پیش از تماس",
+    "faqTitle": "پرسش‌های شروع گفت‌وگو",
+    "faq": [
+      {
+        "q": "از کدام نوع زعفران شروع کنم؟",
+        "a": "توضیح ظاهری چهار نوع را در همین صفحه مقایسه کنید و کاربرد موردنظر را در پیام خود بنویسید. انتخاب نهایی به مشخصات محصول واقعی و نیاز شما بستگی دارد."
+      },
+      {
+        "q": "چه اطلاعاتی در درخواست بفرستم؟",
+        "a": "نوع، مقدار تقریبی، کشور مقصد و ترجیح بسته‌بندی، نقطهٔ شروع خوبی هستند. اگر زمان مشخصی مدنظر دارید آن را هم اضافه کنید."
+      },
+      {
+        "q": "آیا تصاویر و اطلاعات این نسخه نهایی هستند؟",
+        "a": "خیر. این نسخه برای نمایش ساختار سایت تهیه شده است. تصاویر فضاساز، ایمیل و اطلاعات شرکت تا تأیید مالک نمونه هستند."
+      }
+    ],
+    "extra": [
+      "راه‌های ارتباط با فروش",
+      "اطلاعات آزمایشی؛ این حساب به تیم فروش متصل نیست.",
+      "شروع گفت‌وگو",
+      "شناسهٔ WeChat",
+      "برای ارتباط واقعی، اطلاعات نهایی شرکت جایگزین این نمونه‌ها می‌شود.",
+      "راهنمای بررسی نمونه",
+      "پیش از انتخاب، از فروشنده عکس همان محموله را بخواهید و طول رشته، یکنواختی برش و وجود بخش روشن را بررسی کنید. نور و بزرگ‌نمایی عکس می‌تواند برداشت از ظاهر را تغییر دهد.",
+      "اطلاعاتی که بهتر است تأیید کنید",
+      "مبدأ اعلام‌شده، وزن خالص، نوع بسته‌بندی و مدارک مربوط به همان محموله را جداگانه درخواست کنید. این کاتالوگ نمونه، تأییدیهٔ کیفیت یا تعهد عرضه نیست.",
+      "عکس عمومی زعفران؛ نمایش‌دهندهٔ این برش یا محصول شرکت نیست.",
+      "ایمیل نمونه است؛ برنامهٔ ایمیل شما باز می‌شود."
+    ]
+  },
+  "en": {
+    "photoAlt": "Illustrative saffron still life on a pale surface",
+    "imageNote": "Illustrative image; not a representation of available stock",
+    "storyLabel": "From thread to selection",
+    "storyTitle": "Small details. A more informed choice.",
+    "storyBody": "At first glance, the threads all look red. Length, cut and the presence of a pale section distinguish their appearance. The four cuts introduced here are a starting point for a more precise conversation about your needs.",
+    "storySecond": "This preview presents a proposed business introduction. The brand story, location and supply details will replace sample copy once confirmed by the business owner.",
+    "stepsLabel": "Getting started",
+    "stepsTitle": "A clear enquiry in three steps",
+    "steps": [
+      {
+        "title": "Choose a cut",
+        "body": "Share the cut you are interested in or describe your intended use. If you are still deciding, tell us which samples you would like to compare."
+      },
+      {
+        "title": "Quantity and packaging",
+        "body": "Describe your approximate quantity and packaging preference. Available options need to be confirmed with sales."
+      },
+      {
+        "title": "Destination and timing",
+        "body": "Include the destination country and your preferred timeframe so the essential details are together in one message."
+      }
+    ],
+    "noteLabel": "Beyond the name of a cut",
+    "noteTitle": "Begin with what your business needs",
+    "noteBody": "Thread appearance is only one part of a purchasing decision. Ask about batch specifications, packaging and available documentation before deciding. A cut name alone is not a quality certificate.",
+    "faqLabel": "Before you get in touch",
+    "faqTitle": "Questions to start the conversation",
+    "faq": [
+      {
+        "q": "Which cut should I start with?",
+        "a": "Compare the appearance descriptions on this page and include your intended use in your enquiry. The final choice depends on the actual product specifications and your needs."
+      },
+      {
+        "q": "What should I include in an enquiry?",
+        "a": "The cut, approximate quantity, destination and packaging preference are a useful starting point. Add your preferred timeframe if relevant."
+      },
+      {
+        "q": "Are these images and details final?",
+        "a": "No. This is a presentation preview. Atmospheric images, email and business details remain samples until approved by the owner."
+      }
+    ],
+    "extra": [
+      "Contact channels",
+      "Test details; this account is not connected to sales.",
+      "Start a conversation",
+      "WeChat ID",
+      "Replace these samples with verified business contacts before real enquiries.",
+      "Inspecting a sample",
+      "Ask for photographs of the actual batch. Compare thread length, cut consistency and pale sections. Lighting and magnification can change the apparent appearance.",
+      "Details to confirm",
+      "Request declared origin, net weight, packaging and documents for the specific batch separately. This sample catalogue is not a quality certificate or supply commitment.",
+      "General saffron photograph; not this cut or the company’s product.",
+      "Sample address; opens your email application."
+    ]
+  },
+  "de": {
+    "photoAlt": "Illustratives Stillleben mit Safran auf hellem Untergrund",
+    "imageNote": "Beispielbild; keine Abbildung verfügbarer Ware",
+    "storyLabel": "Vom Faden zur Auswahl",
+    "storyTitle": "Kleine Details für eine bewusste Auswahl",
+    "storyBody": "Auf den ersten Blick erscheinen alle Fäden rot. Länge, Schnitt und helle Griffelanteile unterscheiden ihr Aussehen. Die vier vorgestellten Formen bilden den Ausgangspunkt für ein genaueres Gespräch über Ihren Bedarf.",
+    "storySecond": "Diese Vorschau zeigt einen Vorschlag für die Unternehmensvorstellung. Markengeschichte, Standort und Lieferdetails werden nach Bestätigung durch den Inhaber ergänzt.",
+    "stepsLabel": "Die ersten Schritte",
+    "stepsTitle": "In drei Schritten zur klaren Anfrage",
+    "steps": [
+      {
+        "title": "Schnittform wählen",
+        "body": "Nennen Sie die gewünschte Schnittform oder beschreiben Sie den Verwendungszweck. Teilen Sie mit, welche Muster Sie vergleichen möchten."
+      },
+      {
+        "title": "Menge und Verpackung",
+        "body": "Beschreiben Sie die ungefähre Menge und gewünschte Verpackung. Verfügbare Optionen müssen mit dem Vertrieb abgestimmt werden."
+      },
+      {
+        "title": "Ziel und Zeitraum",
+        "body": "Geben Sie Zielland und gewünschten Zeitraum an, damit die wichtigsten Angaben in einer Nachricht vorliegen."
+      }
+    ],
+    "noteLabel": "Mehr als eine Bezeichnung",
+    "noteTitle": "Der Bedarf Ihres Unternehmens steht am Anfang",
+    "noteBody": "Das Aussehen ist nur ein Teil der Kaufentscheidung. Fragen Sie nach Chargenspezifikationen, Verpackung und vorhandenen Unterlagen. Eine Schnittbezeichnung ist kein Qualitätszertifikat.",
+    "faqLabel": "Vor der Kontaktaufnahme",
+    "faqTitle": "Fragen für das erste Gespräch",
+    "faq": [
+      {
+        "q": "Mit welcher Schnittform beginne ich?",
+        "a": "Vergleichen Sie die Beschreibungen und nennen Sie Ihren Verwendungszweck. Entscheidend sind die tatsächlichen Produktspezifikationen und Ihr Bedarf."
+      },
+      {
+        "q": "Welche Angaben gehören in die Anfrage?",
+        "a": "Schnittform, ungefähre Menge, Zielland, Verpackungswunsch und gegebenenfalls Ihr Zeitplan."
+      },
+      {
+        "q": "Sind Bilder und Angaben endgültig?",
+        "a": "Nein. Diese Vorschau dient der Präsentation. Bilder, E-Mail-Adresse und Unternehmensangaben sind bis zur Freigabe Beispiele."
+      }
+    ],
+    "extra": [
+      "Kontaktmöglichkeiten",
+      "Testdaten; kein verbundenes Vertriebskonto.",
+      "Gespräch beginnen",
+      "WeChat-ID",
+      "Vor echten Anfragen müssen bestätigte Kontaktdaten eingetragen werden.",
+      "Muster prüfen",
+      "Bitten Sie um Fotos der tatsächlichen Charge. Vergleichen Sie Länge, Schnitt und helle Anteile. Licht und Vergrößerung beeinflussen den Eindruck.",
+      "Angaben bestätigen",
+      "Fragen Sie nach Herkunft, Nettogewicht, Verpackung und Unterlagen zur jeweiligen Charge. Dieser Musterkatalog ist kein Qualitätszertifikat und keine Lieferzusage.",
+      "Allgemeines Safranfoto; keine Abbildung dieser Sorte oder Firmenware.",
+      "Beispieladresse; öffnet Ihr E-Mail-Programm."
+    ]
+  },
+  "es": {
+    "photoAlt": "Composición ilustrativa de azafrán sobre una superficie clara",
+    "imageNote": "Imagen ilustrativa; no representa existencias disponibles",
+    "storyLabel": "De la hebra a la elección",
+    "storyTitle": "Pequeños detalles para elegir con criterio",
+    "storyBody": "A primera vista todas las hebras parecen rojas. La longitud, el corte y la presencia de una parte clara distinguen su aspecto. Los cuatro cortes presentados son un punto de partida para conversar sobre sus necesidades.",
+    "storySecond": "Esta vista previa propone una presentación del negocio. La historia de la marca, la ubicación y los datos de suministro se incorporarán cuando el propietario los confirme.",
+    "stepsLabel": "Cómo empezar",
+    "stepsTitle": "Una consulta clara en tres pasos",
+    "steps": [
+      {
+        "title": "Elija un corte",
+        "body": "Indique el corte que le interesa o describa el uso previsto. Si aún no ha elegido, señale qué muestras desea comparar."
+      },
+      {
+        "title": "Cantidad y envase",
+        "body": "Describa la cantidad aproximada y sus preferencias de envasado. Las opciones disponibles deben confirmarse con ventas."
+      },
+      {
+        "title": "Destino y fechas",
+        "body": "Incluya el país de destino y el plazo deseado para reunir los datos esenciales en un solo mensaje."
+      }
+    ],
+    "noteLabel": "Más allá del nombre",
+    "noteTitle": "Empiece por las necesidades de su negocio",
+    "noteBody": "El aspecto es solo una parte de la decisión. Consulte las especificaciones del lote, el envase y la documentación disponible. El nombre de un corte no es un certificado de calidad.",
+    "faqLabel": "Antes de contactar",
+    "faqTitle": "Preguntas para iniciar la conversación",
+    "faq": [
+      {
+        "q": "¿Por qué corte empiezo?",
+        "a": "Compare las descripciones e indique el uso previsto. La elección depende de las especificaciones reales y de sus necesidades."
+      },
+      {
+        "q": "¿Qué incluyo en la consulta?",
+        "a": "El corte, la cantidad aproximada, el destino, las preferencias de envase y, si procede, el plazo deseado."
+      },
+      {
+        "q": "¿Son definitivas las imágenes y los datos?",
+        "a": "No. Esta versión es una presentación de muestra. Las imágenes, el correo y los datos del negocio están pendientes de aprobación."
+      }
+    ],
+    "extra": [
+      "Canales de contacto",
+      "Datos de prueba; sin conexión con ventas.",
+      "Iniciar conversación",
+      "ID de WeChat",
+      "Sustituya estos ejemplos por contactos confirmados antes de consultas reales.",
+      "Examinar una muestra",
+      "Solicite fotos del lote real. Compare longitud, uniformidad y partes claras. La luz y la ampliación pueden cambiar la apariencia.",
+      "Datos por confirmar",
+      "Solicite origen declarado, peso neto, envase y documentos del lote concreto. Este catálogo de muestra no es un certificado ni un compromiso de suministro.",
+      "Foto general de azafrán; no representa este corte ni productos de la empresa.",
+      "Dirección de muestra; abre su aplicación de correo."
+    ]
+  },
+  "zh-hans": {
+    "photoAlt": "浅色台面上的藏红花示意静物",
+    "imageNote": "氛围示意图，不代表实际供货产品",
+    "storyLabel": "从花丝到选择",
+    "storyTitle": "观察细节，让选择更清晰",
+    "storyBody": "初看时，花丝都是红色。长度、切分方式及浅色花柱部分的保留情况，使其外观有所不同。这里介绍的四种规格，是进一步讨论采购需求的起点。",
+    "storySecond": "本预览展示企业介绍的建议结构。品牌故事、经营地点及供货信息将在企业负责人确认后替换示例文字。",
+    "stepsLabel": "开始沟通",
+    "stepsTitle": "三个步骤，说明采购需求",
+    "steps": [
+      {
+        "title": "选择规格",
+        "body": "说明感兴趣的规格或预期用途。如果尚未确定，可以列出希望比较的样品。"
+      },
+      {
+        "title": "数量与包装",
+        "body": "说明大致采购量及包装偏好。实际可供选项需与销售团队确认。"
+      },
+      {
+        "title": "目的地与时间",
+        "body": "注明目的地国家及期望时间，便于在一封邮件中提供主要信息。"
+      }
+    ],
+    "noteLabel": "不仅是规格名称",
+    "noteTitle": "从您的业务需求出发",
+    "noteBody": "花丝外观只是采购决策的一部分。决定前，请询问批次规格、包装及可提供的文件。规格名称本身不等于质量证书。",
+    "faqLabel": "联系之前",
+    "faqTitle": "开始沟通时的常见问题",
+    "faq": [
+      {
+        "q": "应该从哪种规格开始？",
+        "a": "比较本页的外观描述，并在咨询中说明用途。最终选择取决于实际产品规格与您的需求。"
+      },
+      {
+        "q": "咨询时需要提供什么？",
+        "a": "规格、大致数量、目的地、包装偏好，以及相关的时间要求。"
+      },
+      {
+        "q": "这些图片和信息是最终版本吗？",
+        "a": "不是。这是展示网站结构的预览。氛围图片、邮箱和企业信息均需负责人确认。"
+      }
+    ],
+    "extra": [
+      "联系方式",
+      "测试信息，此账号未连接销售团队。",
+      "开始沟通",
+      "微信号",
+      "实际咨询前，请替换为已确认的企业联系方式。",
+      "查看样品",
+      "请索取实际批次的照片，比较花丝长度、切分一致性和浅色部分。光线与放大比例可能影响外观判断。",
+      "需要确认的信息",
+      "请分别询问该批次的产地、净重、包装及相关文件。本示例目录不是质量证书或供货承诺。",
+      "藏红花通用照片，不代表此规格或企业产品。",
+      "示例邮箱，将打开您的邮件应用。"
+    ]
+  }
+}
