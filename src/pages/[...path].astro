@@ -1,44 +1,304 @@
 ---
-import {locales,pages,route,names,site,dictionary,ui,ids,product,type Locale} from '../lib/content';
-import '../styles/site.css';
-import editorial from '../data/editorial.json';
+import { locales, pages, route, names, site, dictionary, ui, ids, product, type Locale } from '../lib/content';
 
-export function getStaticPaths(){return locales.flatMap(locale=>pages.map(page=>({params:{path:route(locale,page).slice(1,-1)},props:{locale,page}})));}
-const {locale,page}=Astro.props as {locale:Locale,page:string};
-const t=dictionary(locale),u=ui[locale],e=editorial[locale];
-const id=page.startsWith('products/')?page.split('/')[1]:null;
-const p=id?product(locale,id):null;
-const title=p?p.name:page==='products'?t['catalog.title']:page==='about'?t['nav.about']:page==='contact'?t['contact.title']:t['home.title'];
-const intro=p?p.cardSummary:page==='products'?t['catalog.intro']:page==='about'?t['about.intro']:page==='contact'?t['contact.hint']:t['home.intro'];
-const url=new URL(route(locale,page),site.domain).href;
-const x=e.extra;
-const cards=p?ids.filter(x=>x!==id).slice(0,2):ids;
+import { trade } from '../data/trade';
+import '../styles/site.css';
+
+export function getStaticPaths() {
+  return locales.flatMap(locale => pages.map(page => ({
+    params: { path: route(locale, page).slice(1, -1) },
+    props: { locale, page },
+  })));
+}
+
+const { locale, page } = Astro.props as { locale: Locale; page: string };
+const t = dictionary(locale);
+const labels = ui[locale];
+const copy = trade[locale];
+const home = route(locale);
+const catalogue = home + '#products';
+const contact = route(locale, 'contact');
+const isAbout = page === 'about';
+const isContact = page === 'contact';
+const current = page.startsWith('products/') ? product(locale, page.split('/')[1]) : null;
+const title = current?.name ?? (isAbout ? copy.aboutTitle : isContact ? copy.enquiryTitle : copy.headline);
+const description = current?.cardSummary ?? (isAbout ? copy.aboutLead : isContact ? copy.enquiryLead : copy.introduction);
+const url = new URL(route(locale, page), site.domain).href;
+const language = (value: Locale) => value === 'zh-hans' ? 'zh-Hans' : value;
+const navigation = [
+  { label: t['nav.products'], href: catalogue, active: false },
+  { label: t['nav.about'], href: route(locale, 'about'), active: isAbout },
+  { label: t['nav.contact'], href: contact, active: isContact },
+];
+const media = '/images/';
+const threadsCredit = 'https://commons.wikimedia.org/wiki/File:Iran_saffron_threads.jpg';
+const flowerCredit = 'https://www.pexels.com/photo/saffron-flowers-crocus-sativus-14411011/';
+const fieldCredit = 'https://www.pexels.com/photo/vivid-saffron-flower-blooming-in-pampore-fields-29607044/';
+const cuts = ids.map(id => product(locale, id));
+const emailBody = copy.fields.map(field => field + ': ').join('\r\n');
+const enquiryLink = 'mailto:' + site.email + '?subject=' + encodeURIComponent(copy.enquiryTitle) + '&body=' + encodeURIComponent(emailBody);
 ---
 <!doctype html>
-<html lang={locale==='zh-hans'?'zh-Hans':locale} dir={locale==='fa'?'rtl':'ltr'}>
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><title>{title} · {u[8]} · {site.brand}</title><meta name="description" content={intro}/><link rel="canonical" href={url}/>{locales.map(l=><link rel="alternate" hreflang={l==='zh-hans'?'zh-Hans':l} href={new URL(route(l,page),site.domain).href}/>)}<link rel="alternate" hreflang="x-default" href={new URL(route('en',page),site.domain).href}/>{site.mode==='preview'&&<meta name="robots" content="noindex, follow"/>}<meta property="og:title" content={title}/><meta property="og:description" content={intro}/><meta property="og:url" content={url}/><meta property="og:type" content="website"/></head>
-<body><a class="skip" href="#main">{u[6]}</a><div class="edition">{u[0]} · {u[8]}</div>
-<header class="wrap"><a class="brand" href={route(locale)}><span aria-hidden="true">✳</span> {site.brand}</a><details class="navigation" open><summary>{u[2]}</summary><nav aria-label={u[2]}>{['products','about','contact'].map(x=><a aria-current={page===x?'page':undefined} href={x==='products'?`${route(locale)}#products`:route(locale,x)}>{t[`nav.${x}`]}</a>)}</nav></details><details class="languages"><summary>{names[locale]}</summary><nav aria-label={u[3]}>{locales.map(l=><a lang={l} aria-current={l===locale?'true':undefined} href={route(l,page)}>{names[l]}</a>)}</nav></details></header>
-<main id="main" class="wrap">
-{p&&<nav class="breadcrumb" aria-label={u[1]}><a href={route(locale)}>{u[1]}</a><span>/</span><a href={`${route(locale)}#products`}>{t['nav.products']}</a><span>/</span><span>{p.name}</span></nav>}
-<section class:list={['intro',{'hero':!page,'product':!!p}]}>
-<div class="heading"><p class="eyebrow">{u[8]} {p&&`/ 0${ids.indexOf(p.id)+1}`}</p><h1>{title}</h1></div>
-<div class="intro-copy"><p>{intro}</p>{!page&&<a class="button" href={`${route(locale)}#products`}>{t['home.cta']}</a>}{p&&<a class="button" href={`${route(locale,'contact')}?product=${p.id}`}>{t['product.contact']}</a>}</div>
-{(!page)&&<figure class="main-image editorial-photo"><img src="/images/editorial-saffron.webp" srcset="/images/editorial-saffron-780.webp 780w, /images/editorial-saffron.webp 1536w" sizes="(max-width: 700px) 100vw, 600px" width="1536" height="1024" alt={e.photoAlt} fetchpriority="high"/><figcaption>{e.imageNote}</figcaption></figure>}
-{p&&<figure class="main-image editorial-photo"><img src="/images/editorial-saffron-780.webp" width="780" height="520" alt={e.photoAlt}/><figcaption>{x[9]}</figcaption></figure>}
-</section>
-{p&&<section class="product-guide"><h2>{x[5]}</h2><p>{x[6]}</p><h3>{x[7]}</h3><p>{x[8]}</p></section>}
-{p&&<section class="specs"><h2>{u[5]}</h2><dl><dt>{p.name}</dt><dd>{p.cardSummary}</dd></dl></section>}
-{(!page||p)&&<section class="catalog" id="products"><div class="section-heading"><h2>{p?t.related:t['catalog.title']}</h2><span aria-hidden="true">{p?'02':'04'}</span></div><div class="cards">{cards.map((pid)=>{const item=product(locale,pid);return <a class="card" href={route(locale,`products/${pid}`)}><div class="card-photo"><img src="/images/editorial-saffron-780.webp" width="780" height="520" loading="lazy" alt=""/><span>{u[4]}</span></div><h3>{item.name}</h3><p>{item.cardSummary}</p><span class="card-arrow" aria-hidden="true">↗</span></a>})}</div></section>}
-{(!page||page==='about')&&<section class="about"><p class="eyebrow">{t['nav.about']}</p><h2>{t['about.intro']}</h2><a href={route(locale,'contact')}>{t['contact.title']} <span aria-hidden="true">↗</span></a></section>}
-{page==='contact'&&<section class="contact" id="channels"><a class="email" dir="ltr" href={`mailto:${site.email}`}>{site.email}</a><p>{x[10]}</p><h2>{x[0]}</h2><div class="contact-options"><article><h3>WhatsApp</h3><p>{x[1]}</p><a class="button" href="#demo-contact">{x[2]}</a></article><article><h3>WeChat</h3><p>{x[3]}: <bdi>saffron_demo</bdi></p><a class="button" href="#demo-contact">{x[2]}</a></article></div><aside id="demo-contact" tabindex="-1"><p>{x[1]} {x[4]}</p></aside></section>}
-{(!page||page==='about')&&<section class="story"><figure class="story-photo"><img src="/images/saffron-field.webp" width="1000" height="1200" loading="lazy" alt={u[4]}/><figcaption><a href="https://www.pexels.com/photo/vivid-saffron-flower-blooming-in-pampore-fields-29607044/">Pexels</a> · {u[4]}</figcaption></figure><div><p class="eyebrow">{e.storyLabel}</p><h2>{e.storyTitle}</h2></div><div><p>{e.storyBody}</p><p>{e.storySecond}</p></div></section>}
-{(!page||page==='contact'||p)&&<section class="buying"><p class="eyebrow">{e.stepsLabel}</p><h2>{e.stepsTitle}</h2><div class="steps">{e.steps.map((step,i)=><article><span class="step-number">0{i+1}</span><h3>{step.title}</h3><p>{step.body}</p></article>)}</div></section>}
-{(!page||page==='about')&&<section class="editorial-banner"><img src="/images/saffron-flowers.webp" width="1200" height="1600" loading="lazy" alt=""/><div><p class="eyebrow">{e.noteLabel}</p><h2>{e.noteTitle}</h2><p>{e.noteBody}</p><a class="button" href={route(locale,'contact')}>{t['contact.title']}</a></div></section>}
-{(!page||page==='contact')&&<section class="faq"><p class="eyebrow">{e.faqLabel}</p><h2>{e.faqTitle}</h2>{e.faq.map(item=><details><summary>{item.q}</summary><p>{item.a}</p></details>)}</section>}
-</main><a class="floating-contact" href={`${route(locale,'contact')}#channels`}>{t['contact.title']}</a><footer class="wrap"><a class="brand" href={route(locale)}>{site.brand}</a><p>{u[8]}</p><a href={route(locale,'contact')}>{t['nav.contact']}</a><small><a href="https://www.pexels.com/photo/saffron-flowers-crocus-sativus-14411011/">Merve Safa / Pexels</a></small></footer>
-<script>document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('details[open]').forEach(d=>{d.removeAttribute('open');d.querySelector('summary')?.focus();});});</script>
-</body></html>
+<html lang={language(locale)} dir={locale === 'fa' ? 'rtl' : 'ltr'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {site.brand}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    {locales.map(l => <link rel="alternate" hreflang={language(l)} href={new URL(route(l, page), site.domain).href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(route('en', page), site.domain).href} />
+    {site.mode === 'preview' && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip" href="#main">{labels[6]}</a>
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a class="brand" href={home}><span aria-hidden="true">✳</span>{site.brand}</a>
+        <nav class="desktop-nav" aria-label={labels[2]}>
+          {navigation.map(item => <a href={item.href} aria-current={item.active ? 'page' : undefined}>{item.label}</a>)}
+        </nav>
+        <details class="header-menu mobile-nav">
+          <summary aria-label={labels[2]} aria-controls="mobile-menu">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          </summary>
+          <div class="mobile-panel" id="mobile-menu">
+            <a class="brand" href={home}>{site.brand}</a>
+            <nav class="mobile-links" aria-label={labels[2]}>
+              {navigation.map(item => <a href={item.href} aria-current={item.active ? 'page' : undefined}>{item.label}</a>)}
+            </nav>
+            <div class="mobile-language">
+              <p id="mobile-language-label">{labels[3]}</p>
+              <nav aria-labelledby="mobile-language-label">
+                {locales.map(l => <a lang={language(l)} href={route(l, page)} aria-current={l === locale ? 'true' : undefined}>{names[l]}</a>)}
+              </nav>
+            </div>
+          </div>
+        </details>
+        <details class="header-menu languages" name="header-menu">
+          <summary aria-label={labels[3] + ' · ' + names[locale]}>{names[locale]}</summary>
+          <nav class="menu-panel" aria-label={labels[3]}>
+            {locales.map(l => <a lang={language(l)} href={route(l, page)} aria-current={l === locale ? 'true' : undefined}>{names[l]}</a>)}
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main">
+      {!page && (
+        <>
+          <section class="wrap hero">
+            <div class="hero-copy">
+              <h1>{title}</h1>
+              <p class="lead">{description}</p>
+              <div class="actions">
+                <a class="button" href={catalogue}>{t['home.cta']}</a>
+                <a class="button secondary" href={contact}>{copy.enquiry}</a>
+              </div>
+              <p class="audience">{copy.audience}</p>
+            </div>
+            <figure class="hero-photo">
+              <img src={media + 'editorial-saffron.webp'}
+                srcset={media + 'editorial-saffron-780.webp 780w, ' + media + 'editorial-saffron.webp 1536w'}
+                sizes="(max-width: 760px) calc(100vw - 36px), 55vw" width="1536" height="1024"
+                alt={copy.threadAlt} fetchpriority="high" />
+              <figcaption>{labels[4]}</figcaption>
+            </figure>
+          </section>
+          <section class="catalogue section" id="products">
+            <div class="wrap">
+              <h2>{t['catalog.title']}</h2>
+              <p class="section-lead">{copy.comparison}</p>
+              <div class="cut-grid">
+                {cuts.map(cut => (
+                  <article class="cut-card">
+                    <h3>{cut.name}</h3>
+                    <p>{cut.cardSummary}</p>
+                    <a href={route(locale, 'products/' + cut.id)} aria-label={copy.details + ' · ' + cut.name}>{copy.details} <span aria-hidden="true">↗</span></a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+      {isAbout && (
+        <section class="wrap hero">
+          <div class="hero-copy">
+            <h1>{title}</h1>
+            <p class="lead">{description}</p>
+            <p>{copy.aboutBody}</p>
+            <div class="actions"><a class="button" href={catalogue}>{t['home.cta']}</a></div>
+          </div>
+          <figure class="hero-photo">
+            <img src={media + 'saffron-field.webp'} width="1000" height="667" alt={copy.flowerAlt} fetchpriority="high" />
+            <figcaption>{labels[4]} · <a href={fieldCredit}>Pexels</a></figcaption>
+          </figure>
+        </section>
+      )}
+      {current && (
+        <>
+          <div class="wrap">
+            <nav class="breadcrumbs" aria-label={labels[2]}>
+              <a href={home}>{labels[1]}</a><span aria-hidden="true">/</span>
+              <a href={catalogue}>{t['nav.products']}</a><span aria-hidden="true">/</span>
+              <span aria-current="page">{current.name}</span>
+            </nav>
+            <section class="hero product-hero">
+              <div class="hero-copy">
+                <h1>{title}</h1>
+                <p class="lead">{description}</p>
+                <p>{copy.comparison}</p>
+                <div class="actions"><a class="button" href={contact + '?product=' + current.id}>{t['product.contact']}</a></div>
+              </div>
+              <figure class="hero-photo threads">
+                <img src={media + 'saffron-threads.webp'} width="900" height="863" alt={copy.threadAlt} fetchpriority="high" />
+                <figcaption>{labels[4]} · {labels[8]} · <a href={threadsCredit}>Rainer Zenz / Wikimedia Commons</a></figcaption>
+              </figure>
+            </section>
+          </div>
+        </>
+      )}
+      {!isContact && (
+        <section class="section">
+          <div class:list={['wrap', 'evaluation', { 'text-only': current }]}>
+            {!current && (
+              <figure class="flower-photo">
+                <img src={media + 'saffron-flowers-760.webp'}
+                  srcset={media + 'saffron-flowers-760.webp 760w, ' + media + 'saffron-flowers.webp 1200w'}
+                  sizes="(max-width: 760px) 100vw, 40vw"
+                  width="1200" height="1600" loading="lazy" alt={copy.flowerAlt} />
+                <figcaption>{labels[4]} · <a href={flowerCredit}>Merve Safa / Pexels</a></figcaption>
+              </figure>
+            )}
+            <div>
+              <h2>{copy.reviewTitle}</h2>
+              <dl class="checklist">
+                {copy.checks.map(check => <div><dt>{check.title}</dt><dd>{check.body}</dd></div>)}
+              </dl>
+            </div>
+          </div>
+        </section>
+      )}
+      {current && (
+        <section class="catalogue section">
+          <div class="wrap">
+            <h2>{t.related}</h2>
+            <div class="cut-grid related">
+              {cuts.filter(cut => cut.id !== current.id).map(cut => (
+                <article class="cut-card">
+                  <h3>{cut.name}</h3><p>{cut.cardSummary}</p>
+                  <a href={route(locale, 'products/' + cut.id)} aria-label={copy.details + ' · ' + cut.name}>{copy.details} <span aria-hidden="true">↗</span></a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      {isContact ? (
+        <>
+          <section class="wrap section enquiry" id="channels">
+            <div>
+              <h1>{title}</h1>
+              <p class="lead">{description}</p>
+              <a class="button" data-enquiry-link data-products={JSON.stringify(cuts)} data-field={copy.fields[1]} href={enquiryLink}>{t['contact.email']}</a>
+              <p class="email-address"><a data-enquiry-address href={enquiryLink}><bdi>{site.email}</bdi></a></p>
+              {site.mode === 'preview' && <p class="caption">{labels[0]}</p>}
+              <p class="selected-cut" data-selected-cut hidden></p>
 
+            </div>
+            <div class="enquiry-checklist">
+              <h2>{copy.enquiryChecklist}</h2>
+              <ul>{copy.fields.map(field => <li>{field}</li>)}</ul>
+            </div>
+          </section>
+          <section class="catalogue section">
+            <div class="wrap">
+              <h2>{copy.chatTitle}</h2>
+              <div class="chat-grid">
+                <article class="cut-card"><h3>WhatsApp</h3><p>{copy.unavailable}</p></article>
+                <article class="cut-card"><h3>WeChat</h3><p>{copy.unavailable}</p></article>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : (
+        <section class="trade-cta section">
+          <div class="wrap cta-row">
+            <div><h2>{copy.enquiryTitle}</h2><p>{copy.enquiryLead}</p></div>
+            <a class="button light" href={contact + (current ? '?product=' + current.id : '')}>{copy.enquiry}</a>
+          </div>
+        </section>
+      )}
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <a class="brand" href={home}><span aria-hidden="true">✳</span>{site.brand}</a>
+        <nav aria-label={labels[2]}>{navigation.map(item => <a href={item.href}>{item.label}</a>)}</nav>
+        {site.mode === 'preview' && <small>{labels[0]}</small>}
+      </div>
+    </footer>
+    {!isContact && <a class="floating-contact" href={contact + '#channels'}>{t['contact.title']}</a>}
+    <script>
+      const email = document.querySelector<HTMLAnchorElement>('[data-enquiry-link]');
+      const selected = document.querySelector<HTMLElement>('[data-selected-cut]');
+      if (email?.dataset.products && selected) {
+        const cutId = new URLSearchParams(location.search).get('product');
+        const cuts: { id: string; name: string }[] = JSON.parse(email.dataset.products);
+        const cut = cuts.find(item => item.id === cutId);
+        if (cut) {
+          const link = new URL(email.href);
+          const body = link.searchParams.get('body') ?? '';
+          const field = email.dataset.field + ': ';
+          link.searchParams.set('body', body.replace(field, field + cut.name));
+          email.href = link.href.replaceAll('+', '%20');
+          const address = document.querySelector<HTMLAnchorElement>('[data-enquiry-address]');
+          if (address) address.href = email.href;
+          selected.textContent = cut.name;
+          selected.hidden = false;
+        }
+      }
+      const menus = document.querySelectorAll<HTMLDetailsElement>('.header-menu');
+      for (const menu of menus) {
+        menu.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && menu.open) {
+            menu.open = false;
+            menu.querySelector('summary')?.focus();
+          }
+        });
+        menu.addEventListener('click', event => {
+          if (event.target instanceof Element && event.target.closest('a')) {
+            menu.open = false;
+            menu.querySelector('summary')?.focus({ preventScroll: true });
+          }
+        });
+      }
 
-
+      const mobileMenu = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+      const desktop = matchMedia('(min-width: 761px)');
+      const background = document.querySelectorAll<HTMLElement>('main, .site-footer, .floating-contact, .skip, .header-row > .brand');
+      mobileMenu?.addEventListener('toggle', () => {
+        for (const element of background) element.inert = mobileMenu.open;
+      });
+      desktop.addEventListener('change', () => {
+        if (desktop.matches && mobileMenu?.open) mobileMenu.open = false;
+      });
+      mobileMenu?.addEventListener('keydown', event => {
+        if (event.key !== 'Tab' || !mobileMenu.open) return;
+        const focusable = mobileMenu.querySelectorAll<HTMLElement>('summary, a[href]');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    </script>
+  </body>
+</html>

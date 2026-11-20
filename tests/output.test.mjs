@@ -12,7 +12,7 @@ test('35 complete static pages, reciprocal language routes and local links',()=>
  assert.equal($('link[rel=canonical]').attr('href'),`https://example.com${path}`);
  assert.equal($('link[rel=alternate]').length,6);assert.equal($('meta[name=robots]').attr('content'),'noindex, follow');
  assert.ok($('title').text().length);assert.ok($('meta[name=description]').attr('content'));
- assert.equal($('a[href^="mailto:"]').length,p==='contact'?1:0);
+ assert.equal($('a[href^="mailto:"]').length,p==='contact'?2:0);
  for(const a of $('a[href^="/"]').toArray()){const target=$(a).attr('href').split(/[?#]/)[0];assert.ok(fs.existsSync(`dist${target}index.html`),target);}
  assert.doesNotMatch(html,/priceCurrency|"offers"|checkout|undefined/);
  }
