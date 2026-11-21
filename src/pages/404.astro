@@ -1,4 +1,4 @@
 ---
 import {locales,names,route} from '../lib/content';
 ---
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="robots" content="noindex"/><title>Page not found</title></head><body><main><h1>404 — Page not found</h1><nav>{locales.map(l=><p><a lang={l} href={`${route(l)}#products`}>{names[l]}</a></p>)}</nav></main></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="robots" content="noindex"/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><title>Page not found</title></head><body><main><h1>404 — Page not found</h1><nav>{locales.map(l=><p><a lang={l} href={`${route(l)}#products`}>{names[l]}</a></p>)}</nav></main></body></html>
